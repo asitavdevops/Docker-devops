@@ -14,7 +14,7 @@ Explain : to add a user to the Docker group so they can run Docker commands with
 step 6. in order to reflect the changes restart the docker means logout and log in 
 step 7. create python basic program and save in app.py
 step 8.create docker file 
-step 9. docker build asitavawsdevops/python-application-image:latest .  (Build image)
+step 9. docker build -t asitavawsdevops/first-docker-project-image:latest .  (Build image)
 Note: . --> means docker file in the same directory else need to specify 
 docker run asitavawsdevops/python-application-image:latest -f dockerfile
 step 10. check images --> docker images

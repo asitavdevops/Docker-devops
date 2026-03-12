@@ -1,4 +1,4 @@
-FROM ububtu:latest
+FROM ubuntu:latest
 #Set the working directory in the image
 WORKDIR /app
 #copy the files from host file system to the image file system

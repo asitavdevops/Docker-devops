@@ -18,7 +18,7 @@ step 9. docker build -t asitavawsdevops/first-docker-project-image:latest .  (Bu
 Note: . --> means docker file in the same directory else need to specify 
 docker run asitavawsdevops/python-application-image:latest -f dockerfile
 step 10. check images --> docker images
-step 11. docker run -it asitavawsdevops/python-application-image:latest (run Container)
+step 11. docker run -it asitavawsdevops/first-docker-project-image:latest(run Container)
 step 12  docker login 
           username: dockerhub username
           passwrod : dockerhub passwd

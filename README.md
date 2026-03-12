@@ -1,2 +1,20 @@
 # Docker-devops
-Docker related all topics and projects
+#Project 1 - Create docker container and run basic pytyon applciation called app.py
+Steps :
+Step 1. Create Ec2 instance and connect from CLI
+Step 2. sudo apt update -y
+Step 3. install docker -> sudo apt install docker.io -y
+step 4. run docker run "Hello-world" --> Error permission denied because dockerd run in root user hence need to fix it 
+step 5. sudo usermod -aG docker ubuntu(user)/ec2-user(user)
+step 6. in order to reflect the changes restart the docker means logout and log in 
+step 7. create python basic program and save in app.py
+step 8.create docker file 
+step 9. docker build asitavawsdevops/python-application-image:latest .  (Build image)
+Note: . --> means docker file in the same directory else need to specify 
+docker run asitavawsdevops/python-application-image:latest -f dockerfile
+step 10. check images --> docker images
+step 11. docker run -it asitavawsdevops/python-application-image:latest (run Container)
+step 12  docker login 
+          username: dockerhub username
+          passwrod : dockerhub passwd
+          docker push asitavawsdevops/python-application-image:latest (Push to docker Registory)

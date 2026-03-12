@@ -1,0 +1,12 @@
+FROM ububtu:latest
+#Set the working directory in the image
+WORKDIR /app
+#copy the files from host file system to the image file system
+COPY . /app
+#Install the necessary dependencies/packages
+RUN apt-get update && apt-get install -y python3
+#Set environment variables
+ENV NAME world
+#Run the command to start the applciation
+CMD [ "python3", "app.py" ]
+

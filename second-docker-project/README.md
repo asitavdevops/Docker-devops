@@ -1,5 +1,13 @@
 # Docker-devops
-#Project 2 - Create docker container and run basic pytyon applciation called app.py
+#Project 2 - REST API - Python Application Code (Flask API)
+
+python-docker-app
+│
+├── app.py
+├── requirements.txt
+├── Dockerfile
+└── README.md
+
 Steps :
 Step 1. Create Ec2 instance and connect from CLI
 Step 2. sudo apt update -y

@@ -21,7 +21,12 @@ asitav-portfolio/
 ├── app.py
 ├── requirements.txt
 ├── Dockerfile
-└── README.md
+│
+├── templates/
+│     └── index.html
+│
+└── static/
+      └── style.css
 
 Steps :
 Step 1. Create Ec2 instance and connect from CLI
@@ -46,10 +51,3 @@ step 12  docker login
           username: dockerhub username
           passwrod : dockerhub passwd
           docker push asitavawsdevops/python-application-image:latest (Push to docker Registory)
-=======
-│
-├── templates/
-│     └── index.html
-│
-└── static/
-      └── style.css

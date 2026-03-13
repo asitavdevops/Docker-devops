@@ -51,4 +51,4 @@ step 11. docker run -it asitavawsdevops/first-docker-project-image:latest(run Co
 step 12  docker login 
           username: dockerhub username
           passwrod : dockerhub passwd
-          docker push asitavawsdevops/python-application-image:latest (Push to docker Registory)
+          docker run -d -p 5000:5000 asitavawsdevops/second-docker-project:latest (Push to docker Registory)

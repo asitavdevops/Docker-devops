@@ -1,0 +1,10 @@
+#Base Image
+FROM ubuntu:latest
+# Set working directory inside container
+WORKDIR /app
+#copy the files from source file system to the image file system
+COPY . /app/
+#install the necessary dependencies 
+RUN apt-get update  && apt-get install -y python3
+EXPOSE 5000
+CMD [ "python3", "app.py" ]

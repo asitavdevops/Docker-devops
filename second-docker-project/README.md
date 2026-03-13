@@ -52,3 +52,5 @@ step 12  docker login
           username: dockerhub username
           passwrod : dockerhub passwd
           docker run -d -p 5000:5000 asitavawsdevops/second-docker-project:latest (Push to docker Registory)
+          
+          Note: without -d -p 5000:5000  if we will run it will  fail because we need to map the port with the host port(ec2)

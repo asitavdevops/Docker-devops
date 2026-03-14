@@ -21,5 +21,6 @@ README.md
 
 - calculator.go --> main.go file is the Go application that runs the calculator.
 
+Remove the old image --> docker rmi -f asitavawsdevops/golang-app-image
 
 

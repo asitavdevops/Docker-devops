@@ -45,3 +45,5 @@ curl localhost:8080
 ping database
 
 
+efer : https://github.com/GoogleContainerTools/distroless for the Distroless images
+

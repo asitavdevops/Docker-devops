@@ -1,0 +1,11 @@
+###########BASE IMAGE###############################
+FROM ubuntu:latest 
+WORKDIR /app
+#copy everything from the current directory 
+#on your host machine to the current working directory inside the container.
+#copy . /app/ same as below 
+COPY . . 
+RUN apt-get update && apt-get install -y golang-go
+ENV GO111MODULE=off
+RUN CGO_ENABLED=0 go build -o /app .
+ENTRYPOINT ["/app"]

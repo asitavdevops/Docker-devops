@@ -1,0 +1,22 @@
+#Base image with JDK 17 and Maven for building the application
+#This image contains:Maven 3.9, Eclipse Temurin JDK 17, Linux OS Used for building Java applications.
+#FROM defines the base image for the stage.
+FROM maven:3.9-eclipse-temurin-17 AS build
+#This sets the working directory inside the container.
+WORKDIR /app/
+#COPY pom.xml <source> <destination>
+COPY pom.xml .
+#This copies the Java source code From host:src to container
+COPY src ./src
+RUN maven clean package -DskipTests
+
+#Multi-stage build
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app/
+#Copy JAR from Build Stage or Copy file from previous stage 
+#--from=build --> copy from stage named build
+#/app/target/*.jar --> source file
+#app.jar --> destination file name in the container
+COPY --from=build /app/target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]

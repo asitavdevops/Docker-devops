@@ -112,6 +112,38 @@ step 6. Remove Unused Volumes
 
 Why use volume? Example Because database data must persist even if the container crashes.
 
+**Note: Docker Volue we can create in both Host OS and external Host like EC2,S3 etc**
+
+**Practical Commands:**
+1. Checking the running Volume --> docker volume ls
+2. Create docker logical partition --> docker volume create asitav
+3. How to see all details about volume :
+  ** docker volume inspect asitav**
+4. Delete a volume --> docker volume rm asitav
+5. check top 5 docker images  --> docker images | head -5
+6. create a docker image  and try to create a volume and mount 
+   docker build . && docker run -it
+   docker run -d --mount source=asitav , target=/app nginx:latest
+   docker ps
+   docker inspect <container-id>  (Here we trying inspect the entire container not the volume)
+   Note : If the volume is used by any container then we cant directly delete/rm the volume
+          First we have to stop the container OR delete the container then only we can able to delete the volume.
+
+   **===========Docker Networking==================**
+   Topics: Bridge vs Host vs Overlay |Secure containers with custom bridge network
+   
+   What is Docker Networking?
+   Docker networking allows:
+             1.Container → Container communication
+             2.Container → Host communication
+             3.Container → Internet communication
+   Example: User → Nginx Container → Backend Container → Database Container
+             Here Docker creates a network layer to connect them.
+   
+   
+    
+   
+
 
 
 

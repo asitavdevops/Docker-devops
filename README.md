@@ -23,3 +23,67 @@ step 12  docker login
           username: dockerhub username
           passwrod : dockerhub passwd
           docker push asitavawsdevops/python-application-image:latest (Push to docker Registory)
+
+
+**===============Docker Volume==========================**
+A Bind Mount directly connects a host machine directory to a directory inside the container.
+Best Practice in DevOps: Bind Mount → Development and Volume → Production (Databases, logs, persistent storage)
+
+Host Machine
+   |
+   | /home/asitav/data
+   |
+   └───────────────┐
+                   │
+             Docker Container
+                   │
+                /app/data
+
+docker run -d \
+  -v /home/asitav/data:/app/data \
+  nginx
+**docker run -d** --> used to create and start a new container from  nginx image. -d detached mode(Background)
+\ --> This is a line continuation character in Linux shell.It allows you to write a long command on multiple lines.
+**-v /home/asitav/data:/app/data** --> This is the bind mount.
+Note : Format - -v <host-path>:<container-path>
+
+**Meaning:**
+Files created inside /app/data in the container will appear in /home/asitav/data on the host.
+Files created on the host will appear inside the container.
+
+**Verify It using floowing Docker CLI commands:**
+docker ps
+Check mount: docker inspect <container-id>
+OP : "Mounts": [
+  {
+    "Type": "bind",
+    "Source": "/home/asitav/data",
+    "Destination": "/app/data"
+  }
+]
+
+**-v (Old) and --mount (Modern & Recommended):**
+--mount type=<type>,source=<source>,target=<destination>
+**Example (Bind Mount) :** docker run -d \
+--mount type=bind,source=/home/asitav/data,target=/app/data \
+nginx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

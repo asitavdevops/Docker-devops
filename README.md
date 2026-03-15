@@ -25,7 +25,7 @@ step 12  docker login
           docker push asitavawsdevops/python-application-image:latest (Push to docker Registory)
 
 
-**===============Docker Volume==========================**
+**===============Docker Bind Mount==========================**
 A Bind Mount directly connects a host machine directory to a directory inside the container.
 Best Practice in DevOps: Bind Mount → Development and Volume → Production (Databases, logs, persistent storage)
 
@@ -67,6 +67,51 @@ OP : "Mounts": [
 **Example (Bind Mount) :** docker run -d \
 --mount type=bind,source=/home/asitav/data,target=/app/data \
 nginx
+
+**===============Docker Volume==========================**
+A Docker Volume is managed by Docker itself, not directly by the host filesystem.
+Diagram:
+Host Machine
+     |
+     | /var/lib/docker/volumes/myvolume
+     |
+     └───────────────┐
+                     │
+              Docker Container
+                     │
+                  /app/data
+                  
+Docker stores volumes inside:/var/lib/docker/volumes/
+Create Volume -> docker volume create myvolume
+**Run Container with Volume :**
+docker run -d \
+  -v myvolume:/app/data \
+  nginx
+
+step 1. Volume Creation -> It can be created two ways 
+1. Explicitly --> docker volume create myvolume
+2. Automatic --> docker run -v myvolume:/data nginx (Docker automatically creates the volume if it does not exist)
+
+step 2. Volume Attachment : A volume is attached when the container starts.
+**docker run -v myvolume:/data nginx**
+
+step 3.Data Persistence : Even if the container stops or is deleted, the data remains.
+**docker rm container1**
+
+step 4. Volume Sharing : Multiple containers can share the same volume.
+**docker run -d -v myvolume:/data nginx**
+**docker run -d -v myvolume:/data ubuntu**
+
+step 5 . Volume Removal: Volumes are not deleted automatically unless explicitly removed.
+**docker volume rm myvolume**
+
+step 6. Remove Unused Volumes 
+**docker volume prune**
+
+**Volume Lifecycle Diagram:**
+
+Why use volume? Example Because database data must persist even if the container crashes.
+
 
 
 

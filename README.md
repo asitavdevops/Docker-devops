@@ -24,7 +24,7 @@ step 12  docker login
           passwrod : dockerhub passwd
           docker push asitavawsdevops/python-application-image:latest (Push to docker Registory)
 
-**Why We user Bind Mount/ Volume in docker :**
+**Why We need Bind Mount/ Volume in docker :**
 
 In Docker, containers are ephemeral (temporary). When a container is deleted, its data is also deleted.
 To solve this, Docker provides Volumes and Bind Mounts so that data can persist outside the container.

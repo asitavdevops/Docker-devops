@@ -52,6 +52,11 @@ Shared application data
 **Commands in Practice**
 **docker volume ls** -> To check if any volume running for any comtainer
 **docker ps **-> docker processes are present
+**Check Existing Containers** --> docker ps -a
+**Remove the Old Container** --> first stop all container or 1 container  -> docker stop c3-mount-c1 c2-container c1-container
+                              --> remove the container --> docker rm c3-mount-c1 c2-container c1-container
+**Rename Existing Container** --> docker rename c1-container old-c1-container
+**Remove all stopped containers:** -> docker container prune
 **docker run -dit --name=c1-container nginx** -> Create a container with nginx image
 **docker inspect d5b903e78bf3(container-id)** -> To get the container IP
 **docker network ls** --> Docker container network 
@@ -61,10 +66,21 @@ d68d1f4dc0b5   host      host      local
 59d626046723   none      null      local
 **Crate Bind Mount while creating/running a conatiner:** --> 
 Way 1. docker run -dit -v /home/asitav/app:/home/ubuntu --name c3-mount-c1 ubuntu
-Way 2.
+Way 2. docker run -dit  --mount type=bind,source=/home/ubuntu/amitav,target=/home/app1 --name c2-container nginx:latest
+Note :   -v → automatically creates the host directory
+          --mount → does NOT create it, it must already exist
 
 **Verify the Bind Mount:**
 docker exec -it c3-mount-c1 bash
+**How to Check Bind Mount from Host** --> docker inspect web-container
+**OP** -"Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/ubuntu/asitav",
+                "Destination": "/home/app",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
 
 Example:
 ubuntu@ip-172-31-25-68:/home/asitav/app$ sudo touch file2

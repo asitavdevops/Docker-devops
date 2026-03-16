@@ -24,6 +24,30 @@ step 12  docker login
           passwrod : dockerhub passwd
           docker push asitavawsdevops/python-application-image:latest (Push to docker Registory)
 
+**Why We user Bind Mount/ Volume in docker :**
+
+In Docker, containers are ephemeral (temporary). When a container is deleted, its data is also deleted.
+To solve this, Docker provides Volumes and Bind Mounts so that data can persist outside the container.
+Realtime Example of Volume requirement in  Real Production Example:
+**A microservice architecture:**
+
+Web Container
+API Container
+Database Container
+        |
+     Docker Volume
+        |
+Persistent Database Storage
+
+Why volumes are used:
+- Persistent data
+- Data backup possible
+- Containers can be recreated safely
+Common use cases:
+Databases (MySQL, PostgreSQL, MongoDB)
+Logs
+File storage
+Shared application data
 
 **===============Docker Bind Mount==========================**
 A Bind Mount directly connects a host machine directory to a directory inside the container.

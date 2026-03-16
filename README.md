@@ -49,6 +49,33 @@ Logs
 File storage
 Shared application data
 
+**Commands in Practice**
+**docker volume ls** -> To check if any volume running for any comtainer
+**docker ps **-> docker processes are present
+**docker run -dit --name=c1-container nginx** -> Create a container with nginx image
+**docker inspect d5b903e78bf3(container-id)** -> To get the container IP
+**docker network ls** --> Docker container network 
+NETWORK ID     NAME      DRIVER    SCOPE
+d58862757db7   bridge    bridge    local
+d68d1f4dc0b5   host      host      local
+59d626046723   none      null      local
+**Crate Bind Mount while creating/running a conatiner:** --> 
+Way 1. docker run -dit -v /home/asitav/app:/home/ubuntu --name c3-mount-c1 ubuntu
+Way 2.
+
+**Verify the Bind Mount:**
+docker exec -it c3-mount-c1 bash
+
+Example:
+ubuntu@ip-172-31-25-68:/home/asitav/app$ sudo touch file2
+ubuntu@ip-172-31-25-68:/home/asitav/app$ docker exec -it c3-mount-c1 bash
+root@1a2697d32051:/# cd home/ubuntu/
+root@1a2697d32051:/home/ubuntu# ls -l
+total 0
+-rw-r--r-- 1 root root 0 Mar 16 14:25 file1
+-rw-r--r-- 1 root root 0 Mar 16 14:26 file2
+
+
 **===============Docker Bind Mount==========================**
 A Bind Mount directly connects a host machine directory to a directory inside the container.
 Best Practice in DevOps: Bind Mount → Development and Volume → Production (Databases, logs, persistent storage)
@@ -63,9 +90,8 @@ Host Machine
                    │
                 /app/data
 
-docker run -d \
-  -v /home/asitav/data:/app/data \
-  nginx
+**docker run -dit -v /home/asitav/app:/home/ubuntu --name c3-mount-c1 ubuntu**
+
 **docker run -d** --> used to create and start a new container from  nginx image. -d detached mode(Background)
 \ --> This is a line continuation character in Linux shell.It allows you to write a long command on multiple lines.
 **-v /home/asitav/data:/app/data** --> This is the bind mount.
